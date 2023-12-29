@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F189ADF2B3EC28C001B0145 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F189ADE2B3EC28C001B0145 /* Home.swift */; };
+		8F189AE12B3EC393001B0145 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F189AE02B3EC393001B0145 /* Menu.swift */; };
 		958EB6AF2B3474790023DDDF /* LittleLemonAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */; };
 		958EB6B12B3474790023DDDF /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6B02B3474790023DDDF /* Onboarding.swift */; };
 		958EB6B32B34747B0023DDDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958EB6B22B34747B0023DDDF /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F189ADE2B3EC28C001B0145 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		8F189AE02B3EC393001B0145 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		958EB6AB2B3474790023DDDF /* LittleLemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonAppApp.swift; sourceTree = "<group>"; };
 		958EB6B02B3474790023DDDF /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				958EB6B02B3474790023DDDF /* Onboarding.swift */,
+				8F189ADE2B3EC28C001B0145 /* Home.swift */,
+				8F189AE02B3EC393001B0145 /* Menu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,8 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F189AE12B3EC393001B0145 /* Menu.swift in Sources */,
 				958EB6C42B35BDCC0023DDDF /* OnboardingViewModel.swift in Sources */,
 				958EB6BD2B35BB6F0023DDDF /* Model.swift in Sources */,
+				8F189ADF2B3EC28C001B0145 /* Home.swift in Sources */,
 				958EB6B12B3474790023DDDF /* Onboarding.swift in Sources */,
 				958EB6AF2B3474790023DDDF /* LittleLemonAppApp.swift in Sources */,
 			);
