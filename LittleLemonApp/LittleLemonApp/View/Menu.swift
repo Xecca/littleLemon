@@ -17,42 +17,49 @@ struct Menu: View {
             NSSortDescriptor(keyPath: \Dish.title, ascending: true)
         ]
     ) var dishes: FetchedResults<Dish>
+    @State private var searchText: String = ""
     
     var body: some View {
         VStack {
             Text("LittleLemonApp")
             Text("Chicago")
             Text("Little Lemon Restaurant in Chicago.")
+            
+            TextField("Search Menu", text: $searchText) {
+                print("\(searchText)")
+            }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+            
             FetchedObjects(
                 predicate: buildPredicate(),
-                //                sortDescriptors: buildSortDescriptors()) {
-                sortDescriptors: []) {
-                    (dishes: [Dish]) in
-                    NavigationStack {
-                        List {
-                            ForEach(dishes, id:\.self) { dish in
-                                NavigationLink(destination: Details(dish: dish)) {
-                                    HStack {
-                                        Text("Dish: \(dish.title)")
-                                            .font(.headline)
-                                            .foregroundColor(.primary)
-                                        AsyncImage(url: URL(string: dish.image)) { phase in
-                                            switch phase {
-                                            case .empty:
-                                                ProgressView()
-                                            case .success(let image):
-                                                image
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 50, height: 50) // Adjust the size as needed
-                                            case .failure:
-                                                Image(systemName: "photo")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 50, height: 50) // Adjust the size as needed
-                                            @unknown default:
-                                                fatalError("Unknown async image loading state")
-                                            }
+                sortDescriptors: buildSortDescriptors()
+            ) {
+                (dishes: [Dish]) in
+                NavigationStack {
+                    List {
+                        ForEach(dishes, id:\.self) { dish in
+                            NavigationLink(destination: Details(dish: dish)) {
+                                HStack {
+                                    Text("Dish: \(dish.title)")
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                    AsyncImage(url: URL(string: dish.image)) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            ProgressView()
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50) // Adjust the size as needed
+                                        case .failure:
+                                            Image(systemName: "photo")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 50, height: 50) // Adjust the size as needed
+                                        @unknown default:
+                                            fatalError("Unknown async image loading state")
                                         }
                                     }
                                 }
@@ -60,9 +67,10 @@ struct Menu: View {
                         }
                     }
                 }
-                .onAppear {
-                    getMenuData()
-                }
+            }
+            .onAppear {
+                getMenuData()
+            }
         }
     }
     
@@ -101,8 +109,27 @@ struct Menu: View {
         task.resume()
     }
     
+    private func buildSortDescriptors() -> [NSSortDescriptor] {
+        [
+            NSSortDescriptor(
+                key: "title",
+                ascending: true,
+                selector: #selector(NSString.localizedStandardCompare)
+            ),
+            NSSortDescriptor(
+                key: "price",
+                ascending: false,
+                selector: #selector(NSString.localizedStandardCompare)
+            )
+        ]
+    }
+    
     private func buildPredicate() -> NSPredicate {
-        NSPredicate(value: true)
+        if searchText.isEmpty {
+            return NSPredicate(value: true)
+        }
+        return NSPredicate(format: "title CONTAINS[cd] %@",
+                           searchText)
     }
 }
 
