@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		958EB6AF2B3474790023DDDF /* LittleLemonAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */; };
-		958EB6B12B3474790023DDDF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6B02B3474790023DDDF /* ContentView.swift */; };
+		958EB6B12B3474790023DDDF /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6B02B3474790023DDDF /* Onboarding.swift */; };
 		958EB6B32B34747B0023DDDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958EB6B22B34747B0023DDDF /* Assets.xcassets */; };
 		958EB6B62B34747B0023DDDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958EB6B52B34747B0023DDDF /* Preview Assets.xcassets */; };
+		958EB6BD2B35BB6F0023DDDF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6BC2B35BB6F0023DDDF /* Model.swift */; };
+		958EB6C42B35BDCC0023DDDF /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6C32B35BDCC0023DDDF /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		958EB6AB2B3474790023DDDF /* LittleLemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonAppApp.swift; sourceTree = "<group>"; };
-		958EB6B02B3474790023DDDF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		958EB6B02B3474790023DDDF /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		958EB6B22B34747B0023DDDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		958EB6B52B34747B0023DDDF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		958EB6BC2B35BB6F0023DDDF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		958EB6C32B35BDCC0023DDDF /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,10 @@
 		958EB6AD2B3474790023DDDF /* LittleLemonApp */ = {
 			isa = PBXGroup;
 			children = (
+				958EB6BF2B35BC630023DDDF /* Model */,
+				958EB6BE2B35BC580023DDDF /* View */,
+				958EB6C22B35BD9C0023DDDF /* ViewModel */,
 				958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */,
-				958EB6B02B3474790023DDDF /* ContentView.swift */,
 				958EB6B22B34747B0023DDDF /* Assets.xcassets */,
 				958EB6B42B34747B0023DDDF /* Preview Content */,
 			);
@@ -65,6 +71,30 @@
 				958EB6B52B34747B0023DDDF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		958EB6BE2B35BC580023DDDF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				958EB6B02B3474790023DDDF /* Onboarding.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		958EB6BF2B35BC630023DDDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				958EB6BC2B35BB6F0023DDDF /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		958EB6C22B35BD9C0023DDDF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				958EB6C32B35BDCC0023DDDF /* OnboardingViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				958EB6B12B3474790023DDDF /* ContentView.swift in Sources */,
+				958EB6C42B35BDCC0023DDDF /* OnboardingViewModel.swift in Sources */,
+				958EB6BD2B35BB6F0023DDDF /* Model.swift in Sources */,
+				958EB6B12B3474790023DDDF /* Onboarding.swift in Sources */,
 				958EB6AF2B3474790023DDDF /* LittleLemonAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
