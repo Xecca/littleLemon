@@ -21,6 +21,7 @@ struct UserProfile: View {
                 .font(.title)
             Image("profile-image-placeholder")
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             HStack( content: {
                 Text("First name:")

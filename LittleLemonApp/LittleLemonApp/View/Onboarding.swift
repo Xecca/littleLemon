@@ -11,6 +11,7 @@ struct OnboardingView: View {
     @ObservedObject var viewModel = OnboardingViewModel()
     @State var isLoggedIn = false
     @State private var isEmailValid = true
+    @FocusState private var emailFieldIsFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -27,9 +28,14 @@ struct OnboardingView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.emailAddress)
                     .padding()
+                    .focused($emailFieldIsFocused)
+                    .disableAutocorrection(true)
                     .onTapGesture {
                         // Reset the validation message when the user taps on the TextField
                         isEmailValid = true
+                    }
+                    .onSubmit {
+                        isEmailValid = isValidEmail(email: viewModel.user.email)
                     }
                     .autocapitalization(.none)
                 
