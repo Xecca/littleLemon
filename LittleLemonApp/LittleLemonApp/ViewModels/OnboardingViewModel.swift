@@ -7,10 +7,14 @@
 
 import Foundation
 
+let kFirstName = "first name key"
+let kLastName = "last name key"
+let kEmail = "email key"
+let kIsLoggedIn = "kIsLoggedIn"
+let kUserProfileImageFilename = "kUserProfileImageFilename"
+let kUserProfileImagePath = "kUserProfileImagePath"
+
 class OnboardingViewModel: ObservableObject {
-    private let kFirstName = "first name key"
-    private let kLastName = "last name key"
-    private let kEmail = "email key"
     @Published var user = User(firstName: "", lastName: "", email: "")
     
     func registerUser() {
