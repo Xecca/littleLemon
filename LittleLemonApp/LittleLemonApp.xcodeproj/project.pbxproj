@@ -28,6 +28,7 @@
 		8FECC4092B4C9055001A48BA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FECC4082B4C9055001A48BA /* ImagePicker.swift */; };
 		8FECC40B2B4C9B9F001A48BA /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FECC40A2B4C9B9F001A48BA /* UserProfileViewModel.swift */; };
 		8FECC40D2B4C9DD0001A48BA /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FECC40C2B4C9DD0001A48BA /* Checkbox.swift */; };
+		8FECC40F2B4CA0B5001A48BA /* EmailNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FECC40E2B4CA0B5001A48BA /* EmailNotifications.swift */; };
 		958EB6AF2B3474790023DDDF /* LittleLemonAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */; };
 		958EB6B12B3474790023DDDF /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EB6B02B3474790023DDDF /* Onboarding.swift */; };
 		958EB6B32B34747B0023DDDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958EB6B22B34747B0023DDDF /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		8FECC4082B4C9055001A48BA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8FECC40A2B4C9B9F001A48BA /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		8FECC40C2B4C9DD0001A48BA /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		8FECC40E2B4CA0B5001A48BA /* EmailNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailNotifications.swift; sourceTree = "<group>"; };
 		958EB6AB2B3474790023DDDF /* LittleLemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958EB6AE2B3474790023DDDF /* LittleLemonAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonAppApp.swift; sourceTree = "<group>"; };
 		958EB6B02B3474790023DDDF /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				8F189B0E2B3F7129001B0145 /* Header.swift */,
 				8F189B0C2B3F0EB2001B0145 /* Details.swift */,
 				8F189AE22B3ECE30001B0145 /* UserProfile.swift */,
+				8FECC40E2B4CA0B5001A48BA /* EmailNotifications.swift */,
 				8FECC40C2B4C9DD0001A48BA /* Checkbox.swift */,
 				8F189AE42B3EDFFA001B0145 /* Categories.swift */,
 				8FECC4062B4C85C8001A48BA /* TextFieldView.swift */,
@@ -261,6 +264,7 @@
 				8F189B152B3F821C001B0145 /* Breakdown.swift in Sources */,
 				8F189AEE2B3EEA68001B0145 /* MenuItem.swift in Sources */,
 				958EB6AF2B3474790023DDDF /* LittleLemonAppApp.swift in Sources */,
+				8FECC40F2B4CA0B5001A48BA /* EmailNotifications.swift in Sources */,
 				8F189B0D2B3F0EB2001B0145 /* Details.swift in Sources */,
 				8F189AEC2B3EEA60001B0145 /* MenuList.swift in Sources */,
 			);

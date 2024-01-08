@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserProfile: View {
     @Environment(\.presentationMode) var presentation
-    @StateObject private var viewModel = UserProfileViewModel()
+    @EnvironmentObject private var viewModel: UserProfileViewModel
     @State private var showImagePicker: Bool = false
     
     var body: some View {
@@ -58,21 +58,7 @@ struct UserProfile: View {
                 }
                 
                 // Checkboxes
-                VStack(alignment: .leading) {
-                    Text("Email notifications")
-                        .font(.system(size: 20, weight: .heavy, design: .default))
-                        .padding(.bottom, 20)
-                    HStack {
-                        VStack(alignment: .leading, spacing: 20) {
-                            Checkbox(title: "Order statuses", isChecked: $viewModel.receiveOrderStatuses)
-                            Checkbox(title: "Password changes", isChecked: $viewModel.receivePasswordChanges)
-                            Checkbox(title: "Special offers", isChecked: $viewModel.receiveSpecialOffers)
-                            Checkbox(title: "Newsletter", isChecked: $viewModel.receiveNewsletter)
-                        }
-                        Spacer()
-                    }
-                }
-                .padding(20)
+                EmailNotifications(viewModel: viewModel)
                 
                 Button("Logout") {
                     UserDefaults.standard.setValue(false, forKey: kIsLoggedIn)
@@ -114,7 +100,6 @@ struct UserProfile: View {
         }
     }
 }
-
 
 #Preview {
     UserProfile()

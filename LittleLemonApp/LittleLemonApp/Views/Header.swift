@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Header: View {
+    @ObservedObject var viewModel: UserProfileViewModel
+    
     var body: some View {
         HStack {
             Spacer()
@@ -16,16 +18,26 @@ struct Header: View {
                 .scaledToFit()
                 .frame(height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .padding(.trailing, 20)
-            .frame(height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Image("profile-image-placeholder")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 60, height: 60, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .padding(.trailing, 20)
+            
+            if let userImage = viewModel.userImage {
+                Image(uiImage: userImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 60, height: 60, alignment: .center)
+                    .clipShape(.circle, style: FillStyle())
+                    .padding(.trailing, 20)
+            } else {
+                Image("profile-image-placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 60, height: 60, alignment: .center)
+                    .clipShape(.circle, style: FillStyle())
+                    .padding(.trailing, 20)
+            }
         }
     }
 }
 
-#Preview {
-    Header()
-}
+//#Preview {
+//    Header()
+//}

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json
-
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
@@ -18,10 +16,11 @@ struct Menu: View {
         ]
     ) var dishes: FetchedResults<Dish>
     @State private var searchText: String = ""
+    @EnvironmentObject private var userProfileViewModel: UserProfileViewModel
     
     var body: some View {
         VStack {
-            Header()
+            Header(viewModel: userProfileViewModel)
             Hero(searchText: $searchText)
             Breakdown()
             
