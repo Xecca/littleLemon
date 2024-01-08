@@ -19,6 +19,11 @@ class UserProfileViewModel: ObservableObject {
         return UIImage(named: "profile-image-placeholder")
     }()
     
+    @Published var receiveOrderStatuses: Bool = true
+    @Published var receivePasswordChanges: Bool = true
+    @Published var receiveSpecialOffers: Bool = true
+    @Published var receiveNewsletter: Bool = true
+    
     func setupContent() {
         firstName = UserDefaults.standard.string(forKey: kFirstName) ?? "Unknown"
         lastName = UserDefaults.standard.string(forKey: kLastName) ?? "Unknown"

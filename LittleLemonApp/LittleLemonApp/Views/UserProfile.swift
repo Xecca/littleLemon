@@ -11,7 +11,7 @@ struct UserProfile: View {
     @Environment(\.presentationMode) var presentation
     @StateObject private var viewModel = UserProfileViewModel()
     @State private var showImagePicker: Bool = false
-
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -28,7 +28,7 @@ struct UserProfile: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 80, height: 80, alignment: .center)
                     }
-
+                    
                     Button("Change") {
                         print("Avatar change!")
                         showImagePicker.toggle()
@@ -37,7 +37,7 @@ struct UserProfile: View {
                     .foregroundColor(.white)
                     .background(Color(UIColor(hex: 0x495E57)))
                     .cornerRadius(8)
-
+                    
                     Button("Remove") {
                         print("Avatar removed!")
                         viewModel.userImage = nil
@@ -45,18 +45,35 @@ struct UserProfile: View {
                     .padding()
                     .foregroundColor(.gray)
                     .border(Color.black, width: 1)
-
+                    
                     Spacer()
                 }
                 .padding(.leading, 20)
-
+                
                 VStack(alignment: .leading) {
                     TextFieldView(fieldType: .text, title: "First Name", inputText: $viewModel.firstName)
                     TextFieldView(fieldType: .text, title: "Last Name", inputText: $viewModel.lastName)
                     TextFieldView(fieldType: .email, title: "Email", inputText: $viewModel.email)
                     TextFieldView(fieldType: .phoneNumber, title: "Phone Number", inputText: $viewModel.phone)
                 }
-
+                
+                // Checkboxes
+                VStack(alignment: .leading) {
+                    Text("Email notifications")
+                        .font(.system(size: 20, weight: .heavy, design: .default))
+                        .padding(.bottom, 20)
+                    HStack {
+                        VStack(alignment: .leading, spacing: 20) {
+                            Checkbox(title: "Order statuses", isChecked: $viewModel.receiveOrderStatuses)
+                            Checkbox(title: "Password changes", isChecked: $viewModel.receivePasswordChanges)
+                            Checkbox(title: "Special offers", isChecked: $viewModel.receiveSpecialOffers)
+                            Checkbox(title: "Newsletter", isChecked: $viewModel.receiveNewsletter)
+                        }
+                        Spacer()
+                    }
+                }
+                .padding(20)
+                
                 Button("Logout") {
                     UserDefaults.standard.setValue(false, forKey: kIsLoggedIn)
                     presentation.wrappedValue.dismiss()
@@ -66,7 +83,7 @@ struct UserProfile: View {
                 .background(Color.red)
                 .cornerRadius(8)
                 Spacer()
-
+                
                 HStack {
                     Button("Discard changes") {
                         print("Changes discarded!")
@@ -78,7 +95,7 @@ struct UserProfile: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.gray, lineWidth: 1)
                     )
-
+                    
                     Button("Save changes") {
                         print("Changes saved!")
                         viewModel.saveChanges()
@@ -90,6 +107,7 @@ struct UserProfile: View {
                 }
                 .padding(.top, 20)
             }
+            .padding(.bottom, 20)
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: $viewModel.userImage)
