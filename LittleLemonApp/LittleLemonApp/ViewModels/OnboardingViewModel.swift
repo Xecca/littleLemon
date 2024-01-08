@@ -11,6 +11,8 @@ let kFirstName = "first name key"
 let kLastName = "last name key"
 let kEmail = "email key"
 let kIsLoggedIn = "kIsLoggedIn"
+let kUserProfileImageFilename = "kUserProfileImageFilename"
+let kUserProfileImagePath = "kUserProfileImagePath"
 
 class OnboardingViewModel: ObservableObject {
     @Published var user = User(firstName: "", lastName: "", email: "")
