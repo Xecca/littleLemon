@@ -11,6 +11,7 @@ struct Home: View {
     let persistenceController = PersistenceController.shared
     
     var body: some View {
+        
         TabView {
             Menu()
                 .tabItem {

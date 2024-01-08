@@ -21,52 +21,30 @@ struct Menu: View {
     
     var body: some View {
         VStack {
-            Text("LittleLemonApp")
-            Text("Chicago")
-            Text("Little Lemon Restaurant in Chicago.")
-            
-            TextField("Search Menu", text: $searchText) {
-                print("\(searchText)")
-            }
-            .padding(.leading, 20)
-            .padding(.trailing, 20)
+            Header()
+            Hero(searchText: $searchText)
+            Breakdown()
             
             FetchedObjects(
                 predicate: buildPredicate(),
                 sortDescriptors: buildSortDescriptors()
             ) {
                 (dishes: [Dish]) in
-                NavigationStack {
-                    List {
-                        ForEach(dishes, id:\.self) { dish in
+                ScrollView {
+                    NavigationStack {
+                        ForEach(dishes, id: \.self) { dish in
                             NavigationLink(destination: Details(dish: dish)) {
-                                HStack {
-                                    Text("Dish: \(dish.title)")
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                    AsyncImage(url: URL(string: dish.image)) { phase in
-                                        switch phase {
-                                        case .empty:
-                                            ProgressView()
-                                        case .success(let image):
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50) // Adjust the size as needed
-                                        case .failure:
-                                            Image(systemName: "photo")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 50, height: 50) // Adjust the size as needed
-                                        @unknown default:
-                                            fatalError("Unknown async image loading state")
-                                        }
-                                    }
-                                }
+                                // MenuItemView
+                                MenuItemView(dish: dish)
+
                             }
+                            
                         }
+                        .buttonStyle(PlainButtonStyle()) // Убираем стиль кнопки
                     }
+                    .frame(width: UIScreen.main.bounds.width)
                 }
+                .scrollIndicators(.hidden)
             }
             .onAppear {
                 getMenuData()
@@ -100,7 +78,6 @@ struct Menu: View {
                         // Save the data into the database
                         try? viewContext.save()
                     }
-                    print(result)
                 } catch {
                     print(error)
                 }

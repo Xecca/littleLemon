@@ -16,15 +16,15 @@ struct OnboardingView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
-                TextField("First Name", text: $viewModel.user.firstName)
+                TextField("First Name*", text: $viewModel.user.firstName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                TextField("Last Name", text: $viewModel.user.lastName)
+                TextField("Last Name*", text: $viewModel.user.lastName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                TextField("Email", text: $viewModel.user.email)
+                TextField("Email*", text: $viewModel.user.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.emailAddress)
                     .padding()
