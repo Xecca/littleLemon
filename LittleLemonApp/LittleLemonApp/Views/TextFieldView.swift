@@ -18,7 +18,7 @@ struct TextFieldView: View {
     let title: String
     @Binding var inputText: String
     @State private var isEmailValid = true
-    @FocusState private var emailFieldIsFocused: Bool
+    @State private var showErrorMessage = false
     
     var body: some View {
         VStack(alignment: .leading, content: {
@@ -26,28 +26,33 @@ struct TextFieldView: View {
                 .font(.headline)
                 .foregroundColor(Color(UIColor(hex: 0x495E57)))
             switch fieldType {
-            case .text:
-                TextField("\(title)", text: $inputText)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-            case .phoneNumber:
+            case .text, .phoneNumber:
                 TextField("\(title)", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             case .email:
                 TextField("\(title)", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.emailAddress)
-                    .focused($emailFieldIsFocused)
                     .disableAutocorrection(true)
                     .onTapGesture {
                         // Reset the validation message when the user taps on the TextField
                         isEmailValid = true
+                        showErrorMessage = false
                     }
-                    .onSubmit {
-                        isEmailValid = isValidEmail(email: inputText)
+                    .onChange(of: inputText) { newValue, _ in
+                        isEmailValid = isValidEmail(email: newValue)
+                        showErrorMessage = !isEmailValid
                     }
                     .autocapitalization(.none)
             }
-            
+            if showErrorMessage {
+                withAnimation() {
+                    Text("Invalid email")
+                        .foregroundColor(.red)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                }
+            }
         })
         .padding()
     }

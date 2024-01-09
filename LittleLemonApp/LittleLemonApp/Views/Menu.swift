@@ -21,7 +21,7 @@ struct Menu: View {
     var body: some View {
         VStack {
             Header(viewModel: userProfileViewModel)
-            Hero(searchText: $searchText)
+            Hero(searchText: $searchText, isSearchEnable: true)
             Breakdown()
             
             FetchedObjects(

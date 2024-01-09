@@ -12,55 +12,40 @@ struct OnboardingView: View {
     @State var isLoggedIn = false
     @State private var isEmailValid = true
     @FocusState private var emailFieldIsFocused: Bool
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
-                TextField("First Name*", text: $viewModel.user.firstName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                Hero(searchText: $searchText, isSearchEnable: false)
+                TextFieldView(fieldType: .text, title: "First Name *", inputText: $viewModel.user.firstName)
+                TextFieldView(fieldType: .text, title: "Last Name *", inputText: $viewModel.user.lastName)
                 
-                TextField("Last Name*", text: $viewModel.user.lastName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                TextField("Email*", text: $viewModel.user.email)
+                TextFieldView(fieldType: .email, title: "Email *", inputText: $viewModel.user.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.emailAddress)
-                    .padding()
                     .focused($emailFieldIsFocused)
-                    .disableAutocorrection(true)
-                    .onTapGesture {
-                        // Reset the validation message when the user taps on the TextField
-                        isEmailValid = true
-                    }
-                    .onSubmit {
-                        isEmailValid = isValidEmail(email: viewModel.user.email)
-                    }
                     .autocapitalization(.none)
+                    .padding(.bottom, 8)
                 
                 HStack {
                     Spacer()
                     Button("Register") {
                         // Check if fields are not empty
-                        if isValidEmail(email: viewModel.user.email) {
-                            if !viewModel.user.firstName.isEmpty &&
-                                !viewModel.user.lastName.isEmpty &&
-                                !viewModel.user.email.isEmpty {
-                                
-                                // Optional: Check if email is valid (add your validation logic here)
-                                
-                                // Store user details using ViewModel method
-                                viewModel.saveUserDetails()
-                                
-                                // Perform registration logic (you can customize this)
-                                viewModel.registerUser()
-                                
-                                isLoggedIn = true
-                                UserDefaults.standard.setValue(true, forKey: kIsLoggedIn)
-                            }
+                        if !viewModel.user.firstName.isEmpty &&
+                            !viewModel.user.lastName.isEmpty &&
+                            !viewModel.user.email.isEmpty {
+                            
+                            // Store user details using ViewModel method
+                            viewModel.saveUserDetails()
+                            
+                            // Perform registration logic
+                            viewModel.registerUser()
+                            
+                            isLoggedIn = true
+                            UserDefaults.standard.setValue(true, forKey: kIsLoggedIn)
                         } else {
-                            print("invalid email!!!")
+                            print("invalid inputed data!!!")
                         }
                     }
                     .padding()
@@ -81,11 +66,6 @@ struct OnboardingView: View {
             }
             
         }
-    }
-    
-    private func isValidEmail(email: String) -> Bool {
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
-        return emailPredicate.evaluate(with: email)
     }
 }
 

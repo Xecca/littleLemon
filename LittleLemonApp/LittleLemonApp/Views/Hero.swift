@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Hero: View {
     @Binding var searchText: String
+    var isSearchEnable = false
     
     var body: some View {
         VStack {
@@ -25,9 +26,12 @@ struct Hero: View {
                     Text("Chicago")
                         .foregroundStyle(.white)
                         .font(.system(size: 20, weight: .bold, design: .default))
+                        .padding(.bottom, 1)
+                    Spacer(minLength: 5)
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist. And more we are serve than more we are happy..")
                         .lineLimit(3)
                         .foregroundStyle(.white)
+                        .padding(1)
                 }
                 Image("heroImage")
                     .resizable()
@@ -37,18 +41,9 @@ struct Hero: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.gray)
-                    .padding(.leading, 10)
-                
-                TextField("Search Menu", text: $searchText)
-                    .padding(10)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .padding(.trailing, 10)
+            if isSearchEnable {
+                Search(searchText: $searchText)
             }
-            .padding(20)
         }
         .padding(.top, 10)
         .background(Color(UIColor(hex: 0x495E57)))
